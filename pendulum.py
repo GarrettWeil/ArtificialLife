@@ -16,7 +16,7 @@ viewer.cam.distance = 5.0
 viewer.cam.elevation = -5
 viewer.cam.lookat = np.array([0.012768, -0.000000, 1.254336])
  
-for i in range(10000):
+for i in range(400):
         if viewer.is_alive:
                 mujoco.mj_step(m, d)
                 viewer.render()
