@@ -1,0 +1,74 @@
+<mujoco model="unnamed_model">
+  <option timestep="0.01" integrator="RK4">
+    <flag energy="enable" sensornoise="enable"/>
+  </option>
+  <default>
+    <default class="/"/>
+  </default>
+  <worldbody>
+    <light name="world_light" class="/" pos="0 0 10" dir="0 0 -1" diffuse="0.5 0.5 0.5"/>
+    <geom name="ground_plane" class="/" type="plane" size="0 0 1" rgba="0.5 0 0.5 1"/>
+    <body name="core_body" pos="0 0 2.7581426046834649">
+      <geom name="core_geom" class="/" type="box" size="1.4206214852799315 1.8570042295785558 2.7581426046834649" rgba="0 0.90000000000000002 0 1"/>
+      <joint name="first" class="/" type="free"/>
+      <body name="front_limb_19" pos="0 -6.4320096217241511 0">
+        <joint name="front_shoulder_19" class="/" type="ball" pos="0 4.5750053921455951 0"/>
+        <geom name="front_arm_19" class="/" type="box" size="0.42292843238747679 4.5750053921455951 0.42292843238747679" rgba="0 0 0.69999999999999996 1" mass="1"/>
+        <body name="front_limb_20" pos="0 -6.8625080882183926 0">
+          <joint name="front_shoulder_20" class="/" type="ball" pos="0 2.2875026960727975 0"/>
+          <geom name="front_arm_20" class="/" type="box" size="0.2114642161937384 2.2875026960727975 0.2114642161937384" rgba="0 0 0.80000000000000004 1" mass="1"/>
+          <body name="front_limb_21" pos="0 -3.4312540441091963 0">
+            <joint name="front_shoulder_21" class="/" type="ball" pos="0 1.1437513480363988 0"/>
+            <geom name="front_arm_21" class="/" type="box" size="0.1057321080968692 1.1437513480363988 0.1057321080968692" rgba="0 0 0.90000000000000002 1" mass="1"/>
+            <body name="front_limb_22" pos="0 -1.7156270220545982 0">
+              <joint name="front_shoulder_22" class="/" type="ball" pos="0 0.57187567401819939 0"/>
+              <geom name="front_arm_22" class="/" type="box" size="0.052866054048434599 0.57187567401819939 0.052866054048434599" rgba="0 0 1 1" mass="1"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="left_limb_23" pos="-4.9581540309867371 0 0">
+        <joint name="left_shoulder_23" class="/" type="ball" pos="3.5375325457068052 0 0"/>
+        <geom name="left_arm_23" class="/" type="box" size="3.5375325457068052 0.39696149645552448 0.39696149645552448" rgba="0 0 0.90000000000000002 1" mass="1"/>
+        <body name="left_limb_24" pos="-5.306298818560208 0 0">
+          <joint name="left_shoulder_24" class="/" type="ball" pos="1.7687662728534026 0 0"/>
+          <geom name="left_arm_24" class="/" type="box" size="1.7687662728534026 0.19848074822776224 0.19848074822776224" rgba="0 0 1 1" mass="1"/>
+        </body>
+      </body>
+      <body name="back_limb_25" pos="0 5.1418163080226869 0">
+        <joint name="back_shoulder_25" class="/" type="ball" pos="0 -3.2848120784441308 0"/>
+        <geom name="back_arm_25" class="/" type="box" size="0.67771810674621835 3.2848120784441308 0.67771810674621835" rgba="0 0 0.90000000000000002 1" mass="1"/>
+        <body name="back_limb_26" pos="0 4.9272181176661967 0">
+          <joint name="back_shoulder_26" class="/" type="ball" pos="0 -1.6424060392220654 0"/>
+          <geom name="back_arm_26" class="/" type="box" size="0.33885905337310918 1.6424060392220654 0.33885905337310918" rgba="0 0 1 1" mass="1"/>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <position name="frontxy_3" class="/" group="0" gear="0 0 1" joint="front_shoulder_19" kp="5"/>
+    <position name="frontxz_3" class="/" group="0" gear="0 1 0" joint="front_shoulder_19" kp="5"/>
+    <position name="frontyz_3" class="/" group="0" gear="1 0 0" joint="front_shoulder_19" kp="5"/>
+    <position name="frontxy_2" class="/" group="0" gear="0 0 1" joint="front_shoulder_20" kp="5"/>
+    <position name="frontxz_2" class="/" group="0" gear="0 1 0" joint="front_shoulder_20" kp="5"/>
+    <position name="frontyz_2" class="/" group="0" gear="1 0 0" joint="front_shoulder_20" kp="5"/>
+    <position name="frontxy_1" class="/" group="0" gear="0 0 1" joint="front_shoulder_21" kp="5"/>
+    <position name="frontxz_1" class="/" group="0" gear="0 1 0" joint="front_shoulder_21" kp="5"/>
+    <position name="frontyz_1" class="/" group="0" gear="1 0 0" joint="front_shoulder_21" kp="5"/>
+    <position name="frontxy_0" class="/" group="0" gear="0 0 1" joint="front_shoulder_22" kp="5"/>
+    <position name="frontxz_0" class="/" group="0" gear="0 1 0" joint="front_shoulder_22" kp="5"/>
+    <position name="frontyz_0" class="/" group="0" gear="1 0 0" joint="front_shoulder_22" kp="5"/>
+    <position name="leftxy_1" class="/" group="3" gear="0 0 1" joint="left_shoulder_23" kp="5"/>
+    <position name="leftxz_1" class="/" group="3" gear="0 1 0" joint="left_shoulder_23" kp="5"/>
+    <position name="leftyz_1" class="/" group="3" gear="1 0 0" joint="left_shoulder_23" kp="5"/>
+    <position name="leftxy_0" class="/" group="3" gear="0 0 1" joint="left_shoulder_24" kp="5"/>
+    <position name="leftxz_0" class="/" group="3" gear="0 1 0" joint="left_shoulder_24" kp="5"/>
+    <position name="leftyz_0" class="/" group="3" gear="1 0 0" joint="left_shoulder_24" kp="5"/>
+    <position name="backxy_1" class="/" group="2" gear="0 0 1" joint="back_shoulder_25" kp="5"/>
+    <position name="backxz_1" class="/" group="2" gear="0 1 0" joint="back_shoulder_25" kp="5"/>
+    <position name="backyz_1" class="/" group="2" gear="1 0 0" joint="back_shoulder_25" kp="5"/>
+    <position name="backxy_0" class="/" group="2" gear="0 0 1" joint="back_shoulder_26" kp="5"/>
+    <position name="backxz_0" class="/" group="2" gear="0 1 0" joint="back_shoulder_26" kp="5"/>
+    <position name="backyz_0" class="/" group="2" gear="1 0 0" joint="back_shoulder_26" kp="5"/>
+  </actuator>
+</mujoco>
