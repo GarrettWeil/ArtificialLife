@@ -7,48 +7,59 @@ import time
 
 name_index = 0
 
-def add_limb(parent_body, parent_geom, attaching_to, thickness, length, recursive=0): #function to add a body part
+def add_limb(model, parent_body, parent_geom, face, thickness, length, recursive=0): #function to add a body part
 	global name_index # ensure unique naming
 	name_index = name_index + 1
 
 
 	limb_pos = None # body pos is relative to parent
 	joint_pos = None # joint pos is relative to its geom
+	agroup = None # actuator group
 	parent_size = parent_geom.size
 
 
-	if attaching_to == 'front': # define limb/joint sites per face
+	if face == 'front': # define limb/joint sites per face
+		agroup = 0
 		joint_pos = (0, length, 0)
 		limb_pos = (0, -(parent_size[1]+length), 0)
 		limb_size = (thickness, length, thickness)
 
-	elif attaching_to == 'right':
+	elif face == 'right':
+		agroup = 1
 		joint_pos = (-length, 0, 0)
 		limb_pos = ((parent_size[0]+length), 0, 0)
 		limb_size = (length, thickness, thickness)
 
-	elif attaching_to == 'back':
+	elif face == 'back':
+		agroup = 2
 		joint_pos = (0, -length, 0)
 		limb_pos = (0, parent_size[1]+length, 0)
 		limb_size = (thickness, length, thickness)
 
-	elif attaching_to == 'left':
+	elif face == 'left':
+		agroup = 3
 		joint_pos = (length, 0, 0)
 		limb_pos = (-(parent_size[0]+length), 0, 0)
 		limb_size = (length, thickness, thickness)
 	
 
 	# add limb to parent
-	limb = parent_body.add('body', name=f'limb{name_index}', pos=limb_pos)
+	limb = parent_body.add('body', name=f'{face}_limb_{name_index}', pos=limb_pos)
 
 	# add joint to limb
-	limb.add('joint', name=f'shoulder{name_index}', type='ball', pos=joint_pos)
+	shoulder = limb.add('joint', name=f'{face}_shoulder_{name_index}', type='ball', pos=joint_pos)
+
+	# add actuator for joint
+	model.actuator.add('position', joint=shoulder, group=agroup, name=f'{face}xy_{recursive}', kp=5, gear='0 0 1')
+	model.actuator.add('position', joint=shoulder, group=agroup, name=f'{face}xz_{recursive}', kp=5, gear='0 1 0')
+	model.actuator.add('position', joint=shoulder, group=agroup, name=f'{face}yz_{recursive}', kp=5, gear='1 0 0')
+	
 
 	# add geom to limb
-	geom = limb.add('geom', type='box', name=f'arm{name_index}', size=limb_size)
+	geom = limb.add('geom', type='box', name=f'{face}_arm_{name_index}', size=limb_size, mass=1)
 	
 	if recursive:
-		add_limb(limb, geom, attaching_to, thickness/2, length/2, recursive-1)
+		add_limb(model, limb, geom, face, thickness/2, length/2, recursive-1)
 
 	return limb, geom
 
@@ -69,7 +80,7 @@ core_body.add('joint', name='first', type='free')
 
 # four, three-segmented legs for each side
 for face in ['front', 'right', 'left', 'back']:
-	add_limb(core_body, core_geom, face, 0.2, 0.5, 3)
+	add_limb(mjcf_model, core_body, core_geom, face, 0.2, 0.5, 3)
 
 # save generated file
 mjcf.export_with_assets(mjcf_model, ".", out_file_name="model.xml")
@@ -88,11 +99,23 @@ if DISPLAY:
 	viewer.cam.elevation = -10 #up down tilt
 	#viewer.cam.lookat = np.array([1, 0, 1]) #forward, right, up
 
+# kp = 100
+# kv = 10
+# for actuator in range(len(d.ctrl)):
+# 	m.actuator_gainprm[actuator, 0] = 0
+# 	m.actuator_gainprm[actuator, 1] = -kp
+# 	m.actuator_gainprm[actuator, 2] = -kv
+	
+	
+
 for i in range(4000):
 		if DISPLAY is False:
 				mujoco.mj_step(m, d)
 
 		elif DISPLAY is True and viewer.is_alive:
+				
+				# d.ctrl[1] = np.pi
+
 				mujoco.mj_step(m, d)
 				viewer.render()
 

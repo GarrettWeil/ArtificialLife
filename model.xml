@@ -8,70 +8,120 @@
     <body name="core_body" pos="0 0 0.5">
       <geom name="core_geom" class="/" type="box" size="0.5 0.5 0.5" rgba="0 0.90000000000000002 0 1"/>
       <joint name="first" class="/" type="free"/>
-      <body name="limb1" pos="0 -1 0">
-        <joint name="shoulder1" class="/" type="ball" pos="0 0.5 0"/>
-        <geom name="arm1" class="/" type="box" size="0.20000000000000001 0.5 0.20000000000000001"/>
-        <body name="limb2" pos="0 -0.75 0">
-          <joint name="shoulder2" class="/" type="ball" pos="0 0.25 0"/>
-          <geom name="arm2" class="/" type="box" size="0.10000000000000001 0.25 0.10000000000000001"/>
-          <body name="limb3" pos="0 -0.375 0">
-            <joint name="shoulder3" class="/" type="ball" pos="0 0.125 0"/>
-            <geom name="arm3" class="/" type="box" size="0.050000000000000003 0.125 0.050000000000000003"/>
-            <body name="limb4" pos="0 -0.1875 0">
-              <joint name="shoulder4" class="/" type="ball" pos="0 0.0625 0"/>
-              <geom name="arm4" class="/" type="box" size="0.025000000000000001 0.0625 0.025000000000000001"/>
+      <body name="front_limb_1" pos="0 -1 0">
+        <joint name="front_shoulder_1" class="/" type="ball" pos="0 0.5 0"/>
+        <geom name="front_arm_1" class="/" type="box" size="0.20000000000000001 0.5 0.20000000000000001" mass="1"/>
+        <body name="front_limb_2" pos="0 -0.75 0">
+          <joint name="front_shoulder_2" class="/" type="ball" pos="0 0.25 0"/>
+          <geom name="front_arm_2" class="/" type="box" size="0.10000000000000001 0.25 0.10000000000000001" mass="1"/>
+          <body name="front_limb_3" pos="0 -0.375 0">
+            <joint name="front_shoulder_3" class="/" type="ball" pos="0 0.125 0"/>
+            <geom name="front_arm_3" class="/" type="box" size="0.050000000000000003 0.125 0.050000000000000003" mass="1"/>
+            <body name="front_limb_4" pos="0 -0.1875 0">
+              <joint name="front_shoulder_4" class="/" type="ball" pos="0 0.0625 0"/>
+              <geom name="front_arm_4" class="/" type="box" size="0.025000000000000001 0.0625 0.025000000000000001" mass="1"/>
             </body>
           </body>
         </body>
       </body>
-      <body name="limb5" pos="1 0 0">
-        <joint name="shoulder5" class="/" type="ball" pos="-0.5 0 0"/>
-        <geom name="arm5" class="/" type="box" size="0.5 0.20000000000000001 0.20000000000000001"/>
-        <body name="limb6" pos="0.75 0 0">
-          <joint name="shoulder6" class="/" type="ball" pos="-0.25 0 0"/>
-          <geom name="arm6" class="/" type="box" size="0.25 0.10000000000000001 0.10000000000000001"/>
-          <body name="limb7" pos="0.375 0 0">
-            <joint name="shoulder7" class="/" type="ball" pos="-0.125 0 0"/>
-            <geom name="arm7" class="/" type="box" size="0.125 0.050000000000000003 0.050000000000000003"/>
-            <body name="limb8" pos="0.1875 0 0">
-              <joint name="shoulder8" class="/" type="ball" pos="-0.0625 0 0"/>
-              <geom name="arm8" class="/" type="box" size="0.0625 0.025000000000000001 0.025000000000000001"/>
+      <body name="right_limb_5" pos="1 0 0">
+        <joint name="right_shoulder_5" class="/" type="ball" pos="-0.5 0 0"/>
+        <geom name="right_arm_5" class="/" type="box" size="0.5 0.20000000000000001 0.20000000000000001" mass="1"/>
+        <body name="right_limb_6" pos="0.75 0 0">
+          <joint name="right_shoulder_6" class="/" type="ball" pos="-0.25 0 0"/>
+          <geom name="right_arm_6" class="/" type="box" size="0.25 0.10000000000000001 0.10000000000000001" mass="1"/>
+          <body name="right_limb_7" pos="0.375 0 0">
+            <joint name="right_shoulder_7" class="/" type="ball" pos="-0.125 0 0"/>
+            <geom name="right_arm_7" class="/" type="box" size="0.125 0.050000000000000003 0.050000000000000003" mass="1"/>
+            <body name="right_limb_8" pos="0.1875 0 0">
+              <joint name="right_shoulder_8" class="/" type="ball" pos="-0.0625 0 0"/>
+              <geom name="right_arm_8" class="/" type="box" size="0.0625 0.025000000000000001 0.025000000000000001" mass="1"/>
             </body>
           </body>
         </body>
       </body>
-      <body name="limb9" pos="-1 0 0">
-        <joint name="shoulder9" class="/" type="ball" pos="0.5 0 0"/>
-        <geom name="arm9" class="/" type="box" size="0.5 0.20000000000000001 0.20000000000000001"/>
-        <body name="limb10" pos="-0.75 0 0">
-          <joint name="shoulder10" class="/" type="ball" pos="0.25 0 0"/>
-          <geom name="arm10" class="/" type="box" size="0.25 0.10000000000000001 0.10000000000000001"/>
-          <body name="limb11" pos="-0.375 0 0">
-            <joint name="shoulder11" class="/" type="ball" pos="0.125 0 0"/>
-            <geom name="arm11" class="/" type="box" size="0.125 0.050000000000000003 0.050000000000000003"/>
-            <body name="limb12" pos="-0.1875 0 0">
-              <joint name="shoulder12" class="/" type="ball" pos="0.0625 0 0"/>
-              <geom name="arm12" class="/" type="box" size="0.0625 0.025000000000000001 0.025000000000000001"/>
+      <body name="left_limb_9" pos="-1 0 0">
+        <joint name="left_shoulder_9" class="/" type="ball" pos="0.5 0 0"/>
+        <geom name="left_arm_9" class="/" type="box" size="0.5 0.20000000000000001 0.20000000000000001" mass="1"/>
+        <body name="left_limb_10" pos="-0.75 0 0">
+          <joint name="left_shoulder_10" class="/" type="ball" pos="0.25 0 0"/>
+          <geom name="left_arm_10" class="/" type="box" size="0.25 0.10000000000000001 0.10000000000000001" mass="1"/>
+          <body name="left_limb_11" pos="-0.375 0 0">
+            <joint name="left_shoulder_11" class="/" type="ball" pos="0.125 0 0"/>
+            <geom name="left_arm_11" class="/" type="box" size="0.125 0.050000000000000003 0.050000000000000003" mass="1"/>
+            <body name="left_limb_12" pos="-0.1875 0 0">
+              <joint name="left_shoulder_12" class="/" type="ball" pos="0.0625 0 0"/>
+              <geom name="left_arm_12" class="/" type="box" size="0.0625 0.025000000000000001 0.025000000000000001" mass="1"/>
             </body>
           </body>
         </body>
       </body>
-      <body name="limb13" pos="0 1 0">
-        <joint name="shoulder13" class="/" type="ball" pos="0 -0.5 0"/>
-        <geom name="arm13" class="/" type="box" size="0.20000000000000001 0.5 0.20000000000000001"/>
-        <body name="limb14" pos="0 0.75 0">
-          <joint name="shoulder14" class="/" type="ball" pos="0 -0.25 0"/>
-          <geom name="arm14" class="/" type="box" size="0.10000000000000001 0.25 0.10000000000000001"/>
-          <body name="limb15" pos="0 0.375 0">
-            <joint name="shoulder15" class="/" type="ball" pos="0 -0.125 0"/>
-            <geom name="arm15" class="/" type="box" size="0.050000000000000003 0.125 0.050000000000000003"/>
-            <body name="limb16" pos="0 0.1875 0">
-              <joint name="shoulder16" class="/" type="ball" pos="0 -0.0625 0"/>
-              <geom name="arm16" class="/" type="box" size="0.025000000000000001 0.0625 0.025000000000000001"/>
+      <body name="back_limb_13" pos="0 1 0">
+        <joint name="back_shoulder_13" class="/" type="ball" pos="0 -0.5 0"/>
+        <geom name="back_arm_13" class="/" type="box" size="0.20000000000000001 0.5 0.20000000000000001" mass="1"/>
+        <body name="back_limb_14" pos="0 0.75 0">
+          <joint name="back_shoulder_14" class="/" type="ball" pos="0 -0.25 0"/>
+          <geom name="back_arm_14" class="/" type="box" size="0.10000000000000001 0.25 0.10000000000000001" mass="1"/>
+          <body name="back_limb_15" pos="0 0.375 0">
+            <joint name="back_shoulder_15" class="/" type="ball" pos="0 -0.125 0"/>
+            <geom name="back_arm_15" class="/" type="box" size="0.050000000000000003 0.125 0.050000000000000003" mass="1"/>
+            <body name="back_limb_16" pos="0 0.1875 0">
+              <joint name="back_shoulder_16" class="/" type="ball" pos="0 -0.0625 0"/>
+              <geom name="back_arm_16" class="/" type="box" size="0.025000000000000001 0.0625 0.025000000000000001" mass="1"/>
             </body>
           </body>
         </body>
       </body>
     </body>
   </worldbody>
+  <actuator>
+    <position name="frontxy_3" class="/" group="0" gear="0 0 1" joint="front_shoulder_1" kp="5"/>
+    <position name="frontxz_3" class="/" group="0" gear="0 1 0" joint="front_shoulder_1" kp="5"/>
+    <position name="frontyz_3" class="/" group="0" gear="1 0 0" joint="front_shoulder_1" kp="5"/>
+    <position name="frontxy_2" class="/" group="0" gear="0 0 1" joint="front_shoulder_2" kp="5"/>
+    <position name="frontxz_2" class="/" group="0" gear="0 1 0" joint="front_shoulder_2" kp="5"/>
+    <position name="frontyz_2" class="/" group="0" gear="1 0 0" joint="front_shoulder_2" kp="5"/>
+    <position name="frontxy_1" class="/" group="0" gear="0 0 1" joint="front_shoulder_3" kp="5"/>
+    <position name="frontxz_1" class="/" group="0" gear="0 1 0" joint="front_shoulder_3" kp="5"/>
+    <position name="frontyz_1" class="/" group="0" gear="1 0 0" joint="front_shoulder_3" kp="5"/>
+    <position name="frontxy_0" class="/" group="0" gear="0 0 1" joint="front_shoulder_4" kp="5"/>
+    <position name="frontxz_0" class="/" group="0" gear="0 1 0" joint="front_shoulder_4" kp="5"/>
+    <position name="frontyz_0" class="/" group="0" gear="1 0 0" joint="front_shoulder_4" kp="5"/>
+    <position name="rightxy_3" class="/" group="1" gear="0 0 1" joint="right_shoulder_5" kp="5"/>
+    <position name="rightxz_3" class="/" group="1" gear="0 1 0" joint="right_shoulder_5" kp="5"/>
+    <position name="rightyz_3" class="/" group="1" gear="1 0 0" joint="right_shoulder_5" kp="5"/>
+    <position name="rightxy_2" class="/" group="1" gear="0 0 1" joint="right_shoulder_6" kp="5"/>
+    <position name="rightxz_2" class="/" group="1" gear="0 1 0" joint="right_shoulder_6" kp="5"/>
+    <position name="rightyz_2" class="/" group="1" gear="1 0 0" joint="right_shoulder_6" kp="5"/>
+    <position name="rightxy_1" class="/" group="1" gear="0 0 1" joint="right_shoulder_7" kp="5"/>
+    <position name="rightxz_1" class="/" group="1" gear="0 1 0" joint="right_shoulder_7" kp="5"/>
+    <position name="rightyz_1" class="/" group="1" gear="1 0 0" joint="right_shoulder_7" kp="5"/>
+    <position name="rightxy_0" class="/" group="1" gear="0 0 1" joint="right_shoulder_8" kp="5"/>
+    <position name="rightxz_0" class="/" group="1" gear="0 1 0" joint="right_shoulder_8" kp="5"/>
+    <position name="rightyz_0" class="/" group="1" gear="1 0 0" joint="right_shoulder_8" kp="5"/>
+    <position name="leftxy_3" class="/" group="3" gear="0 0 1" joint="left_shoulder_9" kp="5"/>
+    <position name="leftxz_3" class="/" group="3" gear="0 1 0" joint="left_shoulder_9" kp="5"/>
+    <position name="leftyz_3" class="/" group="3" gear="1 0 0" joint="left_shoulder_9" kp="5"/>
+    <position name="leftxy_2" class="/" group="3" gear="0 0 1" joint="left_shoulder_10" kp="5"/>
+    <position name="leftxz_2" class="/" group="3" gear="0 1 0" joint="left_shoulder_10" kp="5"/>
+    <position name="leftyz_2" class="/" group="3" gear="1 0 0" joint="left_shoulder_10" kp="5"/>
+    <position name="leftxy_1" class="/" group="3" gear="0 0 1" joint="left_shoulder_11" kp="5"/>
+    <position name="leftxz_1" class="/" group="3" gear="0 1 0" joint="left_shoulder_11" kp="5"/>
+    <position name="leftyz_1" class="/" group="3" gear="1 0 0" joint="left_shoulder_11" kp="5"/>
+    <position name="leftxy_0" class="/" group="3" gear="0 0 1" joint="left_shoulder_12" kp="5"/>
+    <position name="leftxz_0" class="/" group="3" gear="0 1 0" joint="left_shoulder_12" kp="5"/>
+    <position name="leftyz_0" class="/" group="3" gear="1 0 0" joint="left_shoulder_12" kp="5"/>
+    <position name="backxy_3" class="/" group="2" gear="0 0 1" joint="back_shoulder_13" kp="5"/>
+    <position name="backxz_3" class="/" group="2" gear="0 1 0" joint="back_shoulder_13" kp="5"/>
+    <position name="backyz_3" class="/" group="2" gear="1 0 0" joint="back_shoulder_13" kp="5"/>
+    <position name="backxy_2" class="/" group="2" gear="0 0 1" joint="back_shoulder_14" kp="5"/>
+    <position name="backxz_2" class="/" group="2" gear="0 1 0" joint="back_shoulder_14" kp="5"/>
+    <position name="backyz_2" class="/" group="2" gear="1 0 0" joint="back_shoulder_14" kp="5"/>
+    <position name="backxy_1" class="/" group="2" gear="0 0 1" joint="back_shoulder_15" kp="5"/>
+    <position name="backxz_1" class="/" group="2" gear="0 1 0" joint="back_shoulder_15" kp="5"/>
+    <position name="backyz_1" class="/" group="2" gear="1 0 0" joint="back_shoulder_15" kp="5"/>
+    <position name="backxy_0" class="/" group="2" gear="0 0 1" joint="back_shoulder_16" kp="5"/>
+    <position name="backxz_0" class="/" group="2" gear="0 1 0" joint="back_shoulder_16" kp="5"/>
+    <position name="backyz_0" class="/" group="2" gear="1 0 0" joint="back_shoulder_16" kp="5"/>
+  </actuator>
 </mujoco>
