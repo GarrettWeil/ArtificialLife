@@ -7,30 +7,35 @@ import time
 
 name_index = 0
 
-def add_limb(parent_body, parent_geom, attaching_to, thickness, length): #function to add a body part
-	global name_index
-
-	limb_pos = None
-	joint_pos = None
-	parent_pos = parent_body.pos
-	parent_size = parent_geom.size
-
+def add_limb(parent_body, parent_geom, attaching_to, thickness, length, recursive=0): #function to add a body part
+	global name_index # ensure unique naming
 	name_index = name_index + 1
 
-	if attaching_to == 'front':
-		pass
+
+	limb_pos = None # body pos is relative to parent
+	joint_pos = None # joint pos is relative to its geom
+	parent_size = parent_geom.size
+
+
+	if attaching_to == 'front': # define limb/joint sites per face
+		joint_pos = (0, length, 0)
+		limb_pos = (0, -(parent_size[1]+length), 0)
+		limb_size = (thickness, length, thickness)
+
 	elif attaching_to == 'right':
-		joint_pos = (parent_size[0], 0, 0)
-		limb_pos = (parent_size[0]+length, 0, 0)
+		joint_pos = (-length, 0, 0)
+		limb_pos = ((parent_size[0]+length), 0, 0)
 		limb_size = (length, thickness, thickness)
 
 	elif attaching_to == 'back':
-		pass
+		joint_pos = (0, -length, 0)
+		limb_pos = (0, parent_size[1]+length, 0)
+		limb_size = (thickness, length, thickness)
+
 	elif attaching_to == 'left':
-		pass
-
-
-	# get parent position
+		joint_pos = (length, 0, 0)
+		limb_pos = (-(parent_size[0]+length), 0, 0)
+		limb_size = (length, thickness, thickness)
 	
 
 	# add limb to parent
@@ -40,27 +45,33 @@ def add_limb(parent_body, parent_geom, attaching_to, thickness, length): #functi
 	limb.add('joint', name=f'shoulder{name_index}', type='ball', pos=joint_pos)
 
 	# add geom to limb
+	geom = limb.add('geom', type='box', name=f'arm{name_index}', size=limb_size)
 	
-	limb.add('geom', type='box', name=f'arm{name_index}', size=limb_size)
+	if recursive:
+		add_limb(limb, geom, attaching_to, thickness/2, length/2, recursive-1)
 
+	return limb, geom
 
 
 parent_xml = "blank_slate.xml"
-
 
 #model generation stage
 # Reference: https://github.com/google-deepmind/dm_control/blob/main/dm_control/mjcf/README.md
 
 mjcf_model = mjcf.from_path(parent_xml)
 
-core_body = mjcf_model.worldbody.add('body', name='core_body', pos=[0, 0, 2.5])
-core_geom = core_body.add('geom', name='core_geom', type='box', size='.5 .5 2.5', rgba='0 .9 0 1')
-core_body.add('joint', name='first', type='free')
-
 #GENOTYPE ENCODING
 
-add_limb(parent_body=core_body, parent_geom=core_geom, attaching_to='right', thickness=0.2, length=2)
+# one body
+core_body = mjcf_model.worldbody.add('body', name='core_body', pos=[0, 0, .5])
+core_geom = core_body.add('geom', name='core_geom', type='box', size='.5 .5 .5', rgba='0 .9 0 1')
+core_body.add('joint', name='first', type='free')
 
+# four, three-segmented legs for each side
+for face in ['front', 'right', 'left', 'back']:
+	add_limb(core_body, core_geom, face, 0.2, 0.5, 3)
+
+# save generated file
 mjcf.export_with_assets(mjcf_model, ".", out_file_name="model.xml")
 
 #simulation and rendering stage

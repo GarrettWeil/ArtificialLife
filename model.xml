@@ -5,12 +5,72 @@
   <worldbody>
     <light name="world_light" class="/" pos="0 0 10" dir="0 0 -1" diffuse="0.5 0.5 0.5"/>
     <geom name="ground_plane" class="/" type="plane" size="0 0 1" rgba="0.5 0 0.5 1"/>
-    <body name="core_body" pos="0 0 2.5">
-      <geom name="core_geom" class="/" type="box" size="0.5 0.5 2.5" rgba="0 0.90000000000000002 0 1"/>
+    <body name="core_body" pos="0 0 0.5">
+      <geom name="core_geom" class="/" type="box" size="0.5 0.5 0.5" rgba="0 0.90000000000000002 0 1"/>
       <joint name="first" class="/" type="free"/>
-      <body name="limb1" pos="2.5 0 0">
-        <joint name="shoulder1" class="/" type="ball" pos="0.5 0 0"/>
-        <geom name="arm1" class="/" type="box" size="2 0.20000000000000001 0.20000000000000001"/>
+      <body name="limb1" pos="0 -1 0">
+        <joint name="shoulder1" class="/" type="ball" pos="0 0.5 0"/>
+        <geom name="arm1" class="/" type="box" size="0.20000000000000001 0.5 0.20000000000000001"/>
+        <body name="limb2" pos="0 -0.75 0">
+          <joint name="shoulder2" class="/" type="ball" pos="0 0.25 0"/>
+          <geom name="arm2" class="/" type="box" size="0.10000000000000001 0.25 0.10000000000000001"/>
+          <body name="limb3" pos="0 -0.375 0">
+            <joint name="shoulder3" class="/" type="ball" pos="0 0.125 0"/>
+            <geom name="arm3" class="/" type="box" size="0.050000000000000003 0.125 0.050000000000000003"/>
+            <body name="limb4" pos="0 -0.1875 0">
+              <joint name="shoulder4" class="/" type="ball" pos="0 0.0625 0"/>
+              <geom name="arm4" class="/" type="box" size="0.025000000000000001 0.0625 0.025000000000000001"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="limb5" pos="1 0 0">
+        <joint name="shoulder5" class="/" type="ball" pos="-0.5 0 0"/>
+        <geom name="arm5" class="/" type="box" size="0.5 0.20000000000000001 0.20000000000000001"/>
+        <body name="limb6" pos="0.75 0 0">
+          <joint name="shoulder6" class="/" type="ball" pos="-0.25 0 0"/>
+          <geom name="arm6" class="/" type="box" size="0.25 0.10000000000000001 0.10000000000000001"/>
+          <body name="limb7" pos="0.375 0 0">
+            <joint name="shoulder7" class="/" type="ball" pos="-0.125 0 0"/>
+            <geom name="arm7" class="/" type="box" size="0.125 0.050000000000000003 0.050000000000000003"/>
+            <body name="limb8" pos="0.1875 0 0">
+              <joint name="shoulder8" class="/" type="ball" pos="-0.0625 0 0"/>
+              <geom name="arm8" class="/" type="box" size="0.0625 0.025000000000000001 0.025000000000000001"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="limb9" pos="-1 0 0">
+        <joint name="shoulder9" class="/" type="ball" pos="0.5 0 0"/>
+        <geom name="arm9" class="/" type="box" size="0.5 0.20000000000000001 0.20000000000000001"/>
+        <body name="limb10" pos="-0.75 0 0">
+          <joint name="shoulder10" class="/" type="ball" pos="0.25 0 0"/>
+          <geom name="arm10" class="/" type="box" size="0.25 0.10000000000000001 0.10000000000000001"/>
+          <body name="limb11" pos="-0.375 0 0">
+            <joint name="shoulder11" class="/" type="ball" pos="0.125 0 0"/>
+            <geom name="arm11" class="/" type="box" size="0.125 0.050000000000000003 0.050000000000000003"/>
+            <body name="limb12" pos="-0.1875 0 0">
+              <joint name="shoulder12" class="/" type="ball" pos="0.0625 0 0"/>
+              <geom name="arm12" class="/" type="box" size="0.0625 0.025000000000000001 0.025000000000000001"/>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="limb13" pos="0 1 0">
+        <joint name="shoulder13" class="/" type="ball" pos="0 -0.5 0"/>
+        <geom name="arm13" class="/" type="box" size="0.20000000000000001 0.5 0.20000000000000001"/>
+        <body name="limb14" pos="0 0.75 0">
+          <joint name="shoulder14" class="/" type="ball" pos="0 -0.25 0"/>
+          <geom name="arm14" class="/" type="box" size="0.10000000000000001 0.25 0.10000000000000001"/>
+          <body name="limb15" pos="0 0.375 0">
+            <joint name="shoulder15" class="/" type="ball" pos="0 -0.125 0"/>
+            <geom name="arm15" class="/" type="box" size="0.050000000000000003 0.125 0.050000000000000003"/>
+            <body name="limb16" pos="0 0.1875 0">
+              <joint name="shoulder16" class="/" type="ball" pos="0 -0.0625 0"/>
+              <geom name="arm16" class="/" type="box" size="0.025000000000000001 0.0625 0.025000000000000001"/>
+            </body>
+          </body>
+        </body>
       </body>
     </body>
   </worldbody>
