@@ -3,7 +3,7 @@ import mujoco
 import mujoco_viewer
 import numpy as np
 from dm_control import mjcf
-import time
+import random
 
 name_index = 0
 
@@ -56,7 +56,7 @@ def add_limb(model, parent_body, parent_geom, face, thickness, length, recursive
 	
 
 	# add geom to limb
-	geom = limb.add('geom', type='box', name=f'{face}_arm_{name_index}', size=limb_size, mass=1)
+	geom = limb.add('geom', type='box', name=f'{face}_arm_{name_index}', size=limb_size, mass=1, rgba=f'0 0 {1 - recursive*0.1} 1')
 	
 	if recursive:
 		add_limb(model, limb, geom, face, thickness/2, length/2, recursive-1)
@@ -72,15 +72,29 @@ parent_xml = "blank_slate.xml"
 mjcf_model = mjcf.from_path(parent_xml)
 
 #GENOTYPE ENCODING
+body_height = random.uniform(0.2, 3)
+body_length = random.uniform(0.2, 3)
+body_width = random.uniform(0.2, 3)
+
 
 # one body
-core_body = mjcf_model.worldbody.add('body', name='core_body', pos=[0, 0, .5])
-core_geom = core_body.add('geom', name='core_geom', type='box', size='.5 .5 .5', rgba='0 .9 0 1')
+core_body = mjcf_model.worldbody.add('body', name='core_body', pos=[0, 0, body_height])
+core_geom = core_body.add('geom', name='core_geom', type='box', size=f'{body_width} {body_length} {body_height}', rgba='0 .9 0 1')
 core_body.add('joint', name='first', type='free')
 
 # four, three-segmented legs for each side
 for face in ['front', 'right', 'left', 'back']:
-	add_limb(mjcf_model, core_body, core_geom, face, 0.2, 0.5, 3)
+	chance_to_skip_face = 0.05
+
+	if random.random() < chance_to_skip_face:
+		continue
+
+	recursion_count = random.randrange(0, 4) #random recursions
+	leg_thickness = random.uniform(0.2, 0.7) #random leg thickness
+	leg_length = random.uniform(0.2, 5) #random leg length
+
+
+	add_limb(mjcf_model, core_body, core_geom, face, leg_thickness, leg_length, recursion_count)
 
 # save generated file
 mjcf.export_with_assets(mjcf_model, ".", out_file_name="model.xml")
